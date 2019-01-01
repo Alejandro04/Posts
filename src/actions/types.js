@@ -1,0 +1,6 @@
+/*CATEGORIES*/
+export const GET_CATEGORIES = "GET_CATEGORIES" ; 
+export const GET_CATEGORY = "GET_CATEGORY"; 
+export const CREATE_CATEGORY = "CREATE_CATEGORY" ; 
+export const DELETE_CATEGORY = "DELETE_CATEGORY" ;
+
