@@ -5,6 +5,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Simple React.js with Redux APP
 ```
 ```
-Consume Ruby on Rails API - https://github.com/Alejandro04/Rest-Api-Rails
+Consume Ruby on Rails API - <a href="https://github.com/Alejandro04/Rest-Api-Rails" target="_blank">CLICK HERE</a>
 ```
 
