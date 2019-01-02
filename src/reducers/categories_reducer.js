@@ -1,7 +1,16 @@
 import {GET_CATEGORIES, GET_CATEGORY} from '../actions/types';
 
-const INITIAL_STATE = {all: [], category: null};
+export default function categoriesReducer(state=[], action){
+  switch(action.type) {
+      case GET_CATEGORIES:
+        return state.concat([action.categories]);
+      default:
+        return state;
+  }
+}
 
+/*
+const INITIAL_STATE = {all: [], category: null};
 export default function(state = INITIAL_STATE, action){
   switch(action.type){
     case GET_CATEGORIES:
@@ -12,3 +21,4 @@ export default function(state = INITIAL_STATE, action){
       return state;
   }
 }
+*/
