@@ -1,9 +1,16 @@
-import {GET_CATEGORIES, GET_CATEGORY, CREATE_CATEGORY, DELETE_CATEGORY} from './types'; 
+import {
+  GET_CATEGORIES, 
+  GET_CATEGORY, 
+  CREATE_CATEGORY, 
+  DELETE_CATEGORY,
+  GET_SUBCATEGORIES } from './types'; 
 import  axios from 'axios';
 
 const API_URL = "http://localhost:5000/api/v1" ;
 
-export default function getAllCategories() {  
+
+/*CATEGORIES*/
+export function getAllCategories() {  
   return dispatch => {
       axios.get(`${API_URL}/categories`)
       .then(res => {
@@ -44,4 +51,31 @@ export function getCategory(id){
     type: GET_CATEGORY,
     payload: request
   }; 
+}
+
+
+/*SUBCATEGORIES*/
+export function getAllSubCategories() {  
+  return dispatch => {
+      axios.get(`${API_URL}/subcategories`)
+      .then(res => {
+        const subcategories = res.data
+        dispatch(getSubCategories(subcategories));
+      });
+    }
+}
+
+function getSubCategories(subcategories){ 
+    return {
+        type: GET_SUBCATEGORIES,
+        subcategories
+    }
+}
+
+export function createSubCategory(props){
+  const request = axios.post(`${API_URL}/subcategories`, props);
+  return{
+    type: CREATE_CATEGORY,
+    payload: request
+  };
 }

@@ -9,6 +9,7 @@ export default function categoriesReducer(state=[], action){
   }
 }
 
+
 /*
 const INITIAL_STATE = {all: [], category: null};
 export default function(state = INITIAL_STATE, action){
