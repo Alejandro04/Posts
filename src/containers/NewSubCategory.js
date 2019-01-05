@@ -6,7 +6,6 @@ class NewSubCategory extends Component{
   
   componentWillMount(){
     this.props.getAllCategories()
-    this.categories()
   }
 
   categories() {
