@@ -1,43 +1,72 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {reduxForm} from 'redux-form'; 
-import {createSubCategory} from '../actions/index'; 
+import { connect } from 'react-redux';
+import {createSubCategory, getAllCategories} from '../actions/index'; 
 
 class NewSubCategory extends Component{
-  static contextTypes = {
-    router: PropTypes.object
+  
+  componentWillMount(){
+    this.props.getAllCategories()
+    this.categories()
   }
 
-  onSubmit(props){
-    this.props.createSubCategory(props)
-      .then(() => {
-        this.context.router.push('/');
+  categories() {
+    if (this.props.categories[0] !== undefined) {
+      return this.props.categories[0].map((category) => {
+        return (
+          <option value={category.id}>{category.name}</option> 
+        )
       });
+    }
+  }
+
+  onSubmit(e){
+    e.preventDefault()
+    const data = {
+        name: this.refs.name.value,
+        category_id: this.refs.category_id.value,
+    }
+
+    this.props.createSubCategory(data)
   }
 
   render(){
-    const {fields:{title}, handleSubmit} = this.props; 
-
     return(
       <div className="container">
 
-      <h1> Create a new SubCategory </h1> 
+        <h1> Create a new SubCategory </h1> 
 
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <div className="form-group">
+            <label>Name</label>
+            <input type="text" 
+              className=""
+              placeholder="Name"
+              name="name"
+              ref="name"
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Name</label>
-          <input type="text" className="form-control" {...title} />
-        </div>
-        <button type="submit" className="btn btn-success">Create</button>
-      </form>
-
+          <div className="form-group">
+            <label>Categories</label>
+            <select name="category_id" ref="category_id">
+              {this.categories()}
+            </select> 
+          </div>
+          
+          <button type="submit" className="btn btn-success">Create</button>
+        </form>
       </div>
     );
   }
 }
 
-export default reduxForm({
-  form: 'NewSubCategoryForm',
-  fields: ['title'] 
-}, null, {createSubCategory})(NewSubCategory); 
+function mapStateToProps(state) {
+  return { categories: state.categories }
+}
+
+const mapDispatchToProps = {
+  createSubCategory,
+  getAllCategories
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewSubCategory); 

@@ -1,33 +1,32 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {reduxForm} from 'redux-form'; 
+import { connect } from 'react-redux';
 import {createCategory} from '../actions/index'; 
 
 class NewCategory extends Component{
-  static contextTypes = {
-    router: PropTypes.object
-  }
 
-  onSubmit(props){
-    this.props.createCategory(props)
-      .then(() => {
-        this.context.router.push('/');
-      });
+  onSubmit(e){
+    e.preventDefault()
+    const data = {
+        name: this.refs.name.value,
+    }
+    this.props.createCategory(data)
   }
 
   render(){
-    const {fields:{title}, handleSubmit} = this.props; 
-
     return(
       <div className="container">
 
       <h1> Create a new category </h1> 
 
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-
+      <form onSubmit={this.onSubmit.bind(this)}>
         <div className="form-group">
           <label>Name</label>
-          <input type="text" className="form-control" {...title} />
+          <input type="text" 
+            className=""
+            placeholder="Name"
+            name="name"
+            ref="name"
+          />
         </div>
         <button type="submit" className="btn btn-success">Create</button>
       </form>
@@ -37,7 +36,12 @@ class NewCategory extends Component{
   }
 }
 
-export default reduxForm({
-  form: 'NewCategoryForm',
-  fields: ['title'] 
-}, null, {createCategory})(NewCategory); 
+function mapStateToProps(state) {
+  return { categories: state.categories }
+}
+
+const mapDispatchToProps = {
+  createCategory
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewCategory); 

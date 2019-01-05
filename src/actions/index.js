@@ -3,7 +3,8 @@ import {
   GET_CATEGORY, 
   CREATE_CATEGORY, 
   DELETE_CATEGORY,
-  GET_SUBCATEGORIES } from './types'; 
+  GET_SUBCATEGORIES,
+  CREATE_SUBCATEGORY } from './types'; 
 import  axios from 'axios';
 
 const API_URL = "http://localhost:5000/api/v1" ;
@@ -75,7 +76,7 @@ function getSubCategories(subcategories){
 export function createSubCategory(props){
   const request = axios.post(`${API_URL}/subcategories`, props);
   return{
-    type: CREATE_CATEGORY,
+    type: CREATE_SUBCATEGORY,
     payload: request
   };
 }
