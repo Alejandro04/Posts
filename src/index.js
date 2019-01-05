@@ -6,7 +6,10 @@ import store from './reducers'
 import { createBrowserHistory } from "history";
 
 
-/*COMPONENTES AND CONTAINERS*/
+/*COMPONENTS*/
+import Dashboard from './components/Dashboard';
+
+/*CONTAINERS*/
 import Posts from './containers/Posts';
 import NewPost from './containers/NewPost';
 import Categories from './containers/Categories';
@@ -27,6 +30,7 @@ ReactDOM.render(
           <Route path="/category/new" component={NewCategory} />
           <Route path="/subcategories" component={SubCategories} />
           <Route path="/subcategory/new" component={NewSubCategory} />
+          <Route path="/" component={Dashboard} />
         </Switch>
       </Router>
     </Provider>,
