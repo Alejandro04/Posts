@@ -4,13 +4,13 @@ import logger from 'redux-logger'
 
 import CategoriesReducer from './categories_reducer'; 
 import SubCategoriesReducer from './subcategories_reducer'; 
-import {reducer as formReducer} from 'redux-form';
+import PostsReducer from './posts_reducer';
 
 
 let rootReducer = combineReducers({
   categories: CategoriesReducer, 
   subcategories: SubCategoriesReducer, 
-  form: formReducer
+  posts: PostsReducer,
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk, logger));

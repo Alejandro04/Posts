@@ -4,7 +4,9 @@ import {
   CREATE_CATEGORY, 
   DELETE_CATEGORY,
   GET_SUBCATEGORIES,
-  CREATE_SUBCATEGORY } from './types'; 
+  CREATE_SUBCATEGORY,
+  GET_POSTS,
+  CREATE_POST } from './types'; 
 import  axios from 'axios';
 
 const API_URL = "http://localhost:5000/api/v1" ;
@@ -80,3 +82,32 @@ export function createSubCategory(props){
     payload: request
   };
 }
+
+
+/*POSTS*/
+export function getAllPosts() {  
+  return dispatch => {
+      axios.get(`${API_URL}/articles`)
+      .then(res => {
+        const posts = res.data
+        dispatch(getPosts(posts));
+      });
+    }
+}
+
+function getPosts(posts){ 
+    return {
+        type: GET_POSTS,
+        posts
+    }
+}
+
+export function createPost(props){
+  const request = axios.post(`${API_URL}/articles`, props);
+  return{
+    type: CREATE_POST,
+    payload: request
+  };
+}
+
+

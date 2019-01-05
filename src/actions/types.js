@@ -10,3 +10,7 @@ export const GET_SUBCATEGORY = "GET_SUBCATEGORY";
 export const CREATE_SUBCATEGORY = "CREATE_SUBCATEGORY" ; 
 export const DELETE_SUBCATEGORY = "DELETE_SUBCATEGORY" ;
 
+/*POST*/
+export const GET_POSTS = "GET_POSTS" ; 
+export const CREATE_POST = "CREATE_POST"; 
+
