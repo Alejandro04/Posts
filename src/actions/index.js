@@ -9,13 +9,22 @@ import {
   CREATE_POST } from './types'; 
 import  axios from 'axios';
 
-const API_URL = "http://localhost:5000/api/v1" ;
+
+/*CONFIG*/
+const API_URL = "http://localhost:3001/api/v1" ;
 
 
 /*CATEGORIES*/
 export function getAllCategories() {  
   return dispatch => {
-      axios.get(`${API_URL}/categories`)
+      axios.get(`${API_URL}/categories`,{
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          "access-token": "",
+          "client": "",
+          "uid": "",
+        }
+      })
       .then(res => {
         const categories = res.data
         dispatch(getCategories(categories));
