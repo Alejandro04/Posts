@@ -1,4 +1,5 @@
 import {
+  LOGIN,
   GET_CATEGORIES, 
   GET_CATEGORY, 
   CREATE_CATEGORY, 
@@ -13,6 +14,14 @@ import  axios from 'axios';
 /*CONFIG*/
 const API_URL = "http://localhost:3001/api/v1" ;
 
+/*LOGIN*/
+export function authUser(props){
+  const request = axios.post("http://localhost:3001/auth/sign_in", props);
+  return{
+    type: LOGIN,
+    payload: request
+  };
+}
 
 /*CATEGORIES*/
 export function getAllCategories() {  

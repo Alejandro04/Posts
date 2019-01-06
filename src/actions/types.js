@@ -14,3 +14,6 @@ export const DELETE_SUBCATEGORY = "DELETE_SUBCATEGORY" ;
 export const GET_POSTS = "GET_POSTS" ; 
 export const CREATE_POST = "CREATE_POST"; 
 
+/*LOGIN*/
+export const LOGIN = "LOGIN" ;
+

@@ -16,6 +16,7 @@ import Categories from './containers/Categories';
 import NewCategory from './containers/NewCategory';
 import SubCategories from './containers/SubCategories';
 import NewSubCategory from './containers/NewSubCategory';
+import Login from './containers/Login';
 
 
 const history = createBrowserHistory();
@@ -30,6 +31,7 @@ ReactDOM.render(
           <Route path="/category/new" component={NewCategory} />
           <Route path="/subcategories" component={SubCategories} />
           <Route path="/subcategory/new" component={NewSubCategory} />
+          <Route path="/login" component={Login} />
           <Route path="/" component={Dashboard} />
         </Switch>
       </Router>
