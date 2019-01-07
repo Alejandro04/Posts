@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 
 
-/*CONFIG*/
+/*CONFIG ENDPOINT*/
 const API_URL = "http://localhost:3002/api/v1";
 
 
@@ -37,7 +37,6 @@ function userLogin(user) {
     user
   }
 }
-
 
 /*CATEGORIES*/
 export function getAllCategories() {
@@ -94,7 +93,14 @@ export function getCategory(id) {
 /*SUBCATEGORIES*/
 export function getAllSubCategories() {
   return dispatch => {
-    axios.get(`${API_URL}/subcategories`)
+    axios.get(`${API_URL}/subcategories`, {
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "access-token": localStorage.getItem('access-token'),
+        "client": localStorage.getItem('client'),
+        "uid": localStorage.getItem('uid'),
+      }
+    })
       .then(res => {
         const subcategories = res.data
         dispatch(getSubCategories(subcategories));
@@ -121,7 +127,14 @@ export function createSubCategory(props) {
 /*POSTS*/
 export function getAllPosts() {
   return dispatch => {
-    axios.get(`${API_URL}/articles`)
+    axios.get(`${API_URL}/articles`, {
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "access-token": localStorage.getItem('access-token'),
+        "client": localStorage.getItem('client'),
+        "uid": localStorage.getItem('uid'),
+      }
+    })
       .then(res => {
         const posts = res.data
         dispatch(getPosts(posts));
