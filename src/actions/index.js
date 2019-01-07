@@ -64,11 +64,28 @@ function getCategories(categories) {
 }
 
 export function createCategory(props) {
-  const request = axios.post(`${API_URL}/categories`, props);
+  return dispatch => {
+    axios.post(`${API_URL}/categories`, props, {
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "access-token": localStorage.getItem('access-token'),
+        "client": localStorage.getItem('client'),
+        "uid": localStorage.getItem('uid'),
+      }
+    })
+      .then(res => {
+        const category = res.data
+        console.log(category)
+        dispatch(newCategory(category));
+      });
+  }
+}
+
+function newCategory(category) {
   return {
     type: CREATE_CATEGORY,
-    payload: request
-  };
+    category
+  }
 }
 
 export function deleteCategory(id) {
@@ -116,11 +133,28 @@ function getSubCategories(subcategories) {
 }
 
 export function createSubCategory(props) {
-  const request = axios.post(`${API_URL}/subcategories`, props);
+  return dispatch => {
+    axios.post(`${API_URL}/subcategories`, props, {
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "access-token": localStorage.getItem('access-token'),
+        "client": localStorage.getItem('client'),
+        "uid": localStorage.getItem('uid'),
+      }
+    })
+      .then(res => {
+        const subcategory = res.data
+        console.log(subcategory)
+        dispatch(newSubCategory(subcategory));
+      });
+  }
+}
+
+function newSubCategory(subcategory) {
   return {
     type: CREATE_SUBCATEGORY,
-    payload: request
-  };
+    subcategory
+  }
 }
 
 
