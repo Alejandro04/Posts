@@ -10,22 +10,33 @@ import {
   CREATE_POST
 } from './types';
 import axios from 'axios';
+import hash from 'object-hash'
+import { Redirect } from 'react-router-dom'
 
 
 /*CONFIG ENDPOINT*/
-const API_URL = "http://localhost:3002/api/v1";
-
+const API_URL = "http://localhost:3003/api/v1";
 
 /*LOGIN*/
 export function authUser(props) {
   return dispatch => {
-    axios.post('http://localhost:3002/auth/sign_in', props)
+    axios.post('http://localhost:3003/auth/sign_in', props)
       .then(res => {
         const user = res.data
         const headers = res.headers
         localStorage.setItem('access-token', headers['access-token']);
         localStorage.setItem('client', headers['client']);
         localStorage.setItem('uid', headers['uid']);
+
+        /*SECURITY*/
+        const secret = hash({access_token: headers['access-token'], client: headers['client'], uid: headers['uid']})
+        localStorage.setItem('axyz', secret);
+
+        /*REDIRECT*/
+        if(user){
+          window.location.href = '/'
+        }
+
         dispatch(userLogin(user));
       });
   }

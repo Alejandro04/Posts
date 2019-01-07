@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {getAllCategories} from '../actions/index';
+import { getAllCategories } from '../actions/index';
 import { Link } from 'react-router-dom';
 
 class Categories extends Component {
-  
+
   componentWillMount() {
     this.props.getAllCategories();
   }
@@ -24,19 +24,19 @@ class Categories extends Component {
   }
   render() {
     return (
-        <div className="container">
+      <div className="container">
 
-            <div>
-                <Link to="category/new" className="btn btn-warning">
-                    Create Category
+        <div>
+          <Link to="category/new" className="btn btn-warning">
+            Create Category
                 </Link>
-            </div>
-
-            Categories
-            <ul className="list-group">
-                {this.renderCategories()}
-            </ul>
         </div>
+
+        Categories
+            <ul className="list-group">
+          {this.renderCategories()}
+        </ul>
+      </div>
     );
   }
 }

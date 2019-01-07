@@ -20,8 +20,16 @@ import Login from './containers/Login';
 
 
 const history = createBrowserHistory();
+const secret = localStorage.getItem('axyz');
 
-ReactDOM.render(
+/************SECURITY************
+If you try to change a header from the localstorage you will not be able to see the info.
+If the entire localstorage header is removed, you will not be able to access the components.
+/***************************/
+
+//if I am logged in
+if(secret){
+  ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
         <Switch>
@@ -38,3 +46,20 @@ ReactDOM.render(
     </Provider>,
     document.getElementById("root")
   );
+}
+
+
+//if I am NOT logged in
+if(secret == null){
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router history={history}>
+        <Switch>
+          <Route path="/login" component={Login} />
+        </Switch>
+      </Router>
+    </Provider>,
+    document.getElementById("root")
+  );
+}
+
