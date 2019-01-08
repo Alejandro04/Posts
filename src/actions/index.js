@@ -15,12 +15,19 @@ import { Redirect } from 'react-router-dom'
 
 
 /*CONFIG ENDPOINT*/
-const API_URL = "http://localhost:3003/api/v1";
+
+//DEV
+//const API_URL = "http://localhost:3003/api/v1";
+//const LOGIN_URL = "http://localhost:3003/auth/sign_in"
+
+//PROD
+const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
+const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
 
 /*LOGIN*/
 export function authUser(props) {
   return dispatch => {
-    axios.post('http://localhost:3003/auth/sign_in', props)
+    axios.post(`${LOGIN_URL}`, props)
       .then(res => {
         const user = res.data
         const headers = res.headers
