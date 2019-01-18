@@ -15,12 +15,12 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form-login">
         <form onSubmit={this.onSubmit.bind(this)}>
           <div className="form-group">
             <label>Email</label>
             <input type="email"
-              className=""
+              className="form-control"
               placeholder="Email"
               name="email"
               ref="email"
@@ -29,14 +29,17 @@ class Login extends Component {
           <div className="form-group">
             <label>Password</label>
             <input type="password"
-              className=""
+              className="form-control"
               placeholder="Password"
               name="password"
               ref="password"
             />
           </div>
-          <button type="submit" className="btn btn-success">Login</button>
+          <button type="submit" className="btn btn-success btn-login">Login</button>
         </form>
+        <div className="access-data">
+          <p>superadmin@superadmin.com | 12345678</p>
+        </div>
       </div>
     );
   }

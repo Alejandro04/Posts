@@ -39,7 +39,6 @@ if(secret){
           <Route path="/category/new" component={NewCategory} />
           <Route path="/subcategories" component={SubCategories} />
           <Route path="/subcategory/new" component={NewSubCategory} />
-          <Route path="/login" component={Login} />
           <Route path="/" component={Dashboard} />
         </Switch>
       </Router>
@@ -55,7 +54,7 @@ if(secret == null){
     <Provider store={store}>
       <Router history={history}>
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route path="/" component={Login} />
         </Switch>
       </Router>
     </Provider>,
