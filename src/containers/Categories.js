@@ -13,11 +13,10 @@ class Categories extends Component {
     if (this.props.categories[0] !== undefined) {
       return this.props.categories[0].slice(0).reverse().map((category) => {
         return (
-          <li key={category.id}>
-            <Link to={"categories/" + category.id}>
-              <h4> {category.name} </h4>
-            </Link>
-          </li>
+          <Link to={"categories/" + category.id} className="list-group-item">
+            <h4 className="list-group-item-heading"> {category.name} </h4>
+            <p className="list-group-item-text">Author</p>
+          </Link>
         )
       });
     }
@@ -27,15 +26,15 @@ class Categories extends Component {
       <div className="container">
 
         <div>
-          <Link to="category/new" className="btn btn-warning">
+          <Link to="category/new" className="btn btn-warning btn-create">
             Create Category
-                </Link>
+          </Link>
         </div>
 
-        Categories
-            <ul className="list-group">
-          {this.renderCategories()}
-        </ul>
+          <h4 className="title-section">Categories  <a href="/" className="btn btn-link">Back</a> </h4>
+          <div class="list-group">
+            {this.renderCategories()}
+          </div>
       </div>
     );
   }

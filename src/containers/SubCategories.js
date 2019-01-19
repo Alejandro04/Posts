@@ -13,11 +13,10 @@ class SubCategories extends Component {
     if (this.props.subcategories[0] !== undefined) {
       return this.props.subcategories[0].slice(0).reverse().map((subcat) => {
         return (
-          <li key={subcat.id}>
-            <Link to={"categories/" + subcat.id}>
-              <h4> {subcat.name} </h4>
+            <Link to={"categories/" + subcat.id} className="list-group-item">
+              <h4 className="list-group-item-heading"> {subcat.name} </h4>
+              <p className="list-group-item-text">Author</p>
             </Link>
-          </li>
         )
       });
     }
@@ -27,15 +26,15 @@ class SubCategories extends Component {
         <div className="container">
 
             <div>
-                <Link to="subcategory/new" className="btn btn-warning">
+                <Link to="subcategory/new" className="btn btn-warning btn-create">
                     Create SubCategory
                 </Link>
             </div>
 
-            SubCategories
-            <ul className="list-group">
+            <h4 className="title-section">SubCategories  <a href="/" className="btn btn-link">Back</a></h4>
+            <div class="list-group">
                 {this.renderSubCategories()}
-            </ul>
+            </div>
         </div>
     );
   }
