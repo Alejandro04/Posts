@@ -11,7 +11,7 @@ class SubCategories extends Component {
 
   renderSubCategories() {
     if (this.props.subcategories[0] !== undefined) {
-      return this.props.subcategories[0].map((subcat) => {
+      return this.props.subcategories[0].slice(0).reverse().map((subcat) => {
         return (
           <li key={subcat.id}>
             <Link to={"categories/" + subcat.id}>

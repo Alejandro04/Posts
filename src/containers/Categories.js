@@ -11,7 +11,7 @@ class Categories extends Component {
 
   renderCategories() {
     if (this.props.categories[0] !== undefined) {
-      return this.props.categories[0].map((category) => {
+      return this.props.categories[0].slice(0).reverse().map((category) => {
         return (
           <li key={category.id}>
             <Link to={"categories/" + category.id}>

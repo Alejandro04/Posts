@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {createCategory, getAllCategories} from '../actions/index'; 
+import { createCategory, getAllCategories } from '../actions/index';
 
-class NewCategory extends Component{
-  constructor(){
+class NewCategory extends Component {
+  constructor() {
     super()
 
     this.state = {
-        categories: []
+      categories: [],
     }
-}
+  }
 
   componentWillMount() {
     this.props.getAllCategories();
@@ -20,52 +20,54 @@ class NewCategory extends Component{
     })
   }
 
-  onSubmit(e){
+  onSubmit(e) {
     e.preventDefault()
     const data = {
-        name: this.refs.name.value,
+      name: this.refs.name.value,
     }
     this.state.categories.push(data)
     this.props.createCategory(data)
   }
 
-  render(){
+  render() {
     var categories = []
     if (this.props.categories[0] !== undefined && this.state.categories !== undefined) {
-      categories = this.state.categories.map((cat, i) => {
-        return(
-            [
-                cat.name,
-            ]
+      categories = this.state.categories.slice(0).reverse().map((cat, i) => {
+        return (
+          [
+            <h5 className="alert-success">{cat.name}</h5>
+          ]
         )
       })
-    }else{
+    } else {
       //if there is no props it is because they must be loaded - go to categories for update the store.
       window.location.href = '/categories'
     }
 
-    return(
+    return (
       <div className="container">
-
-      <h1> Create a new category </h1> 
-
-      <form onSubmit={this.onSubmit.bind(this)}>
-        <div className="form-group">
-          <label>Name</label>
-          <input type="text" 
-            className=""
-            placeholder="Name"
-            name="name"
-            ref="name"
-          />
+        <div className="form-login">
+          <h3> Create a new category </h3>
+          <form onSubmit={this.onSubmit.bind(this)}>
+            <div className="form-group">
+              <label>Name</label>
+              <input type="text"
+                className="form-control"
+                placeholder="Name"
+                name="name"
+                ref="name"
+              />
+            </div>
+            <button type="submit" className="btn btn-success">Create</button>
+            <a href="/categories" className="btn btn-info btn-back">Categories</a>
+          </form>
         </div>
-        <button type="submit" className="btn btn-success">Create</button>
-      </form>
 
-      <div>
-        {categories}
-      </div>
-      
+        <h2>Categories:</h2>
+        <div className="access-data items-box">
+          {categories}
+        </div>
+
       </div>
     );
   }
