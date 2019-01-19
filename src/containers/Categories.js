@@ -15,7 +15,6 @@ class Categories extends Component {
         return (
           <Link to={"categories/" + category.id} className="list-group-item">
             <h4 className="list-group-item-heading"> {category.name} </h4>
-            <p className="list-group-item-text">Author</p>
           </Link>
         )
       });

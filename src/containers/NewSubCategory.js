@@ -26,7 +26,6 @@ class NewSubCategory extends Component {
     }
 
     this.props.createSubCategory(data)
-    window.location.href = '/subcategories'
   }
 
   render() {
@@ -54,7 +53,6 @@ class NewSubCategory extends Component {
             </div>
 
             <button type="submit" className="btn btn-success">Create</button>
-            <a href="/subcategories" className="btn btn-info btn-back">SubCategories</a>
             <a href="/subcategories" className="btn btn-link">Back</a>
           </form>
         </div>

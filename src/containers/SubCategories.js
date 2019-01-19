@@ -15,7 +15,6 @@ class SubCategories extends Component {
         return (
             <Link to={"categories/" + subcat.id} className="list-group-item">
               <h4 className="list-group-item-heading"> {subcat.name} </h4>
-              <p className="list-group-item-text">Author</p>
             </Link>
         )
       });

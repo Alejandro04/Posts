@@ -17,12 +17,12 @@ import { Redirect } from 'react-router-dom'
 /*CONFIG ENDPOINT*/
 
 //DEV
-//const API_URL = "http://localhost:3003/api/v1";
-//const LOGIN_URL = "http://localhost:3003/auth/sign_in"
+const API_URL = "http://localhost:3003/api/v1";
+const LOGIN_URL = "http://localhost:3003/auth/sign_in"
 
 //PROD
-const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
-const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
+//const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
+//const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
 
 /*LOGIN*/
 export function authUser(props) {
@@ -95,6 +95,7 @@ export function createCategory(props) {
         const category = res.data
         console.log(category)
         dispatch(newCategory(category));
+        window.location.href = '/subcategories'
       });
   }
 }
@@ -164,6 +165,7 @@ export function createSubCategory(props) {
         const subcategory = res.data
         console.log(subcategory)
         dispatch(newSubCategory(subcategory));
+        window.location.href = '/subcategories'
       });
   }
 }
@@ -189,6 +191,7 @@ export function getAllPosts() {
     })
       .then(res => {
         const posts = res.data
+        console.log(posts)
         dispatch(getPosts(posts));
       });
   }
@@ -202,11 +205,30 @@ function getPosts(posts) {
 }
 
 export function createPost(props) {
-  const request = axios.post(`${API_URL}/articles`, props);
+  return dispatch => {
+    axios.post(`${API_URL}/articles`, props, {
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "access-token": localStorage.getItem('access-token'),
+        "client": localStorage.getItem('client'),
+        "uid": localStorage.getItem('uid'),
+      }
+    })
+      .then(res => {
+        const post = res.post
+        console.log(post)
+        dispatch(newPost(post));
+        window.location.href = '/subcategories'
+      });
+  }
+}
+
+function newPost(post) {
   return {
     type: CREATE_POST,
-    payload: request
-  };
+    post
+  }
 }
+
 
 

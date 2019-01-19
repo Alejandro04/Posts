@@ -32,7 +32,6 @@ class NewCategory extends Component {
               />
             </div>
             <button type="submit" className="btn btn-success">Create</button>
-            <a href="/categories" className="btn btn-info btn-back">Categories</a>
             <a href="/categories" className="btn btn-link">Back</a>
           </form>
         </div>
