@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'; 
 import {getCategory} from '../actions/index'; 
 
-class Category extends Component{
+class SubCategory extends Component{
 
   componentWillMount(){
    // this.props.getCategory(this.props.params.id); 
@@ -15,7 +15,7 @@ class Category extends Component{
       <h3>Name:  </h3>
 
       <button className="btn btn-warning">
-        Delete Category
+        Delete SubCategory
       </button> 
 
       </div>
@@ -29,4 +29,4 @@ function mapStateToProps(state){
 }
 */
 
-export default Category
+export default SubCategory

@@ -13,7 +13,7 @@ class SubCategories extends Component {
     if (this.props.subcategories[0] !== undefined) {
       return this.props.subcategories[0].slice(0).reverse().map((subcat) => {
         return (
-            <Link to={"categories/" + subcat.id} className="list-group-item">
+            <Link to={"subcategory/" + subcat.id} className="list-group-item">
               <h4 className="list-group-item-heading"> {subcat.name} </h4>
             </Link>
         )

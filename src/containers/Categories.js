@@ -13,7 +13,7 @@ class Categories extends Component {
     if (this.props.categories[0] !== undefined) {
       return this.props.categories[0].slice(0).reverse().map((category) => {
         return (
-          <Link to={"categories/" + category.id} className="list-group-item">
+          <Link to={"category/" + category.id} className="list-group-item">
             <h4 className="list-group-item-heading"> {category.name} </h4>
           </Link>
         )

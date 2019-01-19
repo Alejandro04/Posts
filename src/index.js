@@ -16,6 +16,8 @@ import Categories from './containers/Categories';
 import NewCategory from './containers/NewCategory';
 import SubCategories from './containers/SubCategories';
 import NewSubCategory from './containers/NewSubCategory';
+import SubCategory from './containers/SubCategory';
+import Category from './containers/Category';
 import Login from './containers/Login';
 
 
@@ -37,8 +39,10 @@ if(secret){
           <Route path="/post/new" component={NewPost} />
           <Route path="/categories" component={Categories} />
           <Route path="/category/new" component={NewCategory} />
+          <Route path="/category/:id" component={Category} />
           <Route path="/subcategories" component={SubCategories} />
           <Route path="/subcategory/new" component={NewSubCategory} />
+          <Route path="/subcategory/:id" component={SubCategory} />
           <Route path="/" component={Dashboard} />
         </Switch>
       </Router>
