@@ -17,3 +17,6 @@ export const CREATE_POST = "CREATE_POST";
 /*LOGIN*/
 export const LOGIN = "LOGIN" ;
 
+/*LANDING*/
+export const GET_LANDING_POSTS = "GET_LANDING_POSTS" ; 
+

@@ -7,7 +7,8 @@ import {
   GET_SUBCATEGORIES,
   CREATE_SUBCATEGORY,
   GET_POSTS,
-  CREATE_POST
+  CREATE_POST,
+  GET_LANDING_POSTS
 } from './types';
 import axios from 'axios';
 import hash from 'object-hash'
@@ -227,6 +228,26 @@ function newPost(post) {
   return {
     type: CREATE_POST,
     post
+  }
+}
+
+
+/*LANDING*/
+export function getAllLandingPosts() {
+  return dispatch => {
+    axios.get(`${API_URL}/posts`, {})
+      .then(res => {
+        const posts = res.data
+        console.log(posts)
+        dispatch(getLandingPosts(posts));
+      });
+  }
+}
+
+function getLandingPosts(posts) {
+  return {
+    type: GET_LANDING_POSTS,
+    posts
   }
 }
 

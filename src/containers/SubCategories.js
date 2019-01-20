@@ -30,7 +30,7 @@ class SubCategories extends Component {
                 </Link>
             </div>
 
-            <h4 className="title-section">SubCategories  <a href="/" className="btn btn-link">Back</a></h4>
+            <h4 className="title-section">SubCategories  <a href="/dashboard" className="btn btn-link">Back</a></h4>
             <div class="list-group">
                 {this.renderSubCategories()}
             </div>

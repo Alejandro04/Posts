@@ -30,7 +30,7 @@ class Categories extends Component {
           </Link>
         </div>
 
-          <h4 className="title-section">Categories  <a href="/" className="btn btn-link">Back</a> </h4>
+          <h4 className="title-section">Categories  <a href="/dashboard" className="btn btn-link">Back</a> </h4>
           <div class="list-group">
             {this.renderCategories()}
           </div>
