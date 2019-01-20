@@ -96,7 +96,7 @@ export function createCategory(props) {
         const category = res.data
         console.log(category)
         dispatch(newCategory(category));
-        window.location.href = '/subcategories'
+        window.location.href = '/categories'
       });
   }
 }
