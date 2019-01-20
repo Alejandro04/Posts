@@ -11,7 +11,7 @@ class Posts extends Component {
 
   renderPosts() {
     if (this.props.posts[0] !== undefined) {
-      return this.props.posts[0].map((post) => {
+      return this.props.posts[0].slice(0).reverse().map((post) => {
         return (
           <Link to={"posts/" + post.id} className="list-group-item">
             <h4 className="list-group-item-heading"> {post.title} </h4>

@@ -10,8 +10,8 @@ class Landing extends Component {
     }
 
     renderPosts() {
-        if (this.props.posts[0] !== undefined) {
-          return this.props.posts[0].map((post) => {
+        if (this.props.posts_landing[0] !== undefined) {
+          return this.props.posts_landing[0].slice(0).reverse().map((post) => {
             return (
                 <div class="post-preview">
                     <a href="#">
@@ -120,7 +120,7 @@ class Landing extends Component {
 }
 
 function mapStateToProps(state) {
-    return { posts: state.posts }
+    return { posts_landing: state.posts_landing }
   }
   
   const mapDispatchToProps = {

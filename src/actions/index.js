@@ -18,12 +18,12 @@ import { Redirect } from 'react-router-dom'
 /*CONFIG ENDPOINT*/
 
 //DEV
-const API_URL = "http://localhost:3003/api/v1";
-const LOGIN_URL = "http://localhost:3003/auth/sign_in"
+//const API_URL = "http://localhost:3003/api/v1";
+//const LOGIN_URL = "http://localhost:3003/auth/sign_in"
 
 //PROD
-//const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
-//const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
+const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
+const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
 
 /*LOGIN*/
 export function authUser(props) {
@@ -42,7 +42,7 @@ export function authUser(props) {
 
         /*REDIRECT*/
         if(user){
-          window.location.href = '/'
+          window.location.href = '/dashboard'
         }
 
         dispatch(userLogin(user));
@@ -219,7 +219,7 @@ export function createPost(props) {
         const post = res.post
         console.log(post)
         dispatch(newPost(post));
-        window.location.href = '/subcategories'
+        window.location.href = '/posts'
       });
   }
 }
@@ -237,17 +237,17 @@ export function getAllLandingPosts() {
   return dispatch => {
     axios.get(`${API_URL}/posts`, {})
       .then(res => {
-        const posts = res.data
-        console.log(posts)
-        dispatch(getLandingPosts(posts));
+        const posts_landing = res.data
+        console.log(posts_landing)
+        dispatch(getLandingPosts(posts_landing));
       });
   }
 }
 
-function getLandingPosts(posts) {
+function getLandingPosts(posts_landing) {
   return {
     type: GET_LANDING_POSTS,
-    posts
+    posts_landing
   }
 }
 

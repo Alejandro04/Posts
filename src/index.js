@@ -45,6 +45,7 @@ if(secret){
           <Route path="/subcategory/new" component={NewSubCategory} />
           <Route path="/subcategory/:id" component={SubCategory} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/" component={Landing} />
         </Switch>
       </Router>
     </Provider>,

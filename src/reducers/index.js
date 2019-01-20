@@ -13,7 +13,7 @@ let rootReducer = combineReducers({
   categories: CategoriesReducer, 
   subcategories: SubCategoriesReducer, 
   posts: PostsReducer,
-  posts: PostsLandingReducer
+  posts_landing: PostsLandingReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk, logger));
