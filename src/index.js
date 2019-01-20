@@ -8,7 +8,8 @@ import { createBrowserHistory } from "history";
 
 /*COMPONENTS*/
 import Dashboard from './components/Dashboard';
-import Landing from './components/Landing'
+import Landing from './components/Landing';
+import LandingPost from './components/LandingPost';
 
 /*CONTAINERS*/
 import Posts from './containers/Posts';
@@ -45,6 +46,7 @@ if(secret){
           <Route path="/subcategory/new" component={NewSubCategory} />
           <Route path="/subcategory/:id" component={SubCategory} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/landing/post/:id" component={LandingPost} />
           <Route path="/" component={Landing} />
         </Switch>
       </Router>
@@ -61,6 +63,7 @@ if(secret == null){
       <Router history={history}>
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/landing/post/:id" component={LandingPost} />
           <Route path="/" component={Landing} />
         </Switch>
       </Router>

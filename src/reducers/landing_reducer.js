@@ -1,4 +1,4 @@
-import {GET_LANDING_POSTS} from '../actions/types';
+import {GET_LANDING_POSTS, GET_LANDING_POST} from '../actions/types';
 
 export default function postsLandingReducer(state=[], action){
   switch(action.type) {

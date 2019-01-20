@@ -8,7 +8,8 @@ import {
   CREATE_SUBCATEGORY,
   GET_POSTS,
   CREATE_POST,
-  GET_LANDING_POSTS
+  GET_LANDING_POSTS,
+  GET_LANDING_POST
 } from './types';
 import axios from 'axios';
 import hash from 'object-hash'
@@ -18,12 +19,12 @@ import { Redirect } from 'react-router-dom'
 /*CONFIG ENDPOINT*/
 
 //DEV
-//const API_URL = "http://localhost:3003/api/v1";
-//const LOGIN_URL = "http://localhost:3003/auth/sign_in"
+const API_URL = "http://localhost:3003/api/v1";
+const LOGIN_URL = "http://localhost:3003/auth/sign_in"
 
 //PROD
-const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
-const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
+//const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
+//const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
 
 /*LOGIN*/
 export function authUser(props) {
@@ -248,6 +249,23 @@ function getLandingPosts(posts_landing) {
   return {
     type: GET_LANDING_POSTS,
     posts_landing
+  }
+}
+
+export function getLandingPost(id) {
+  return dispatch => {
+    axios.get(`${API_URL}/posts/${id}`, {})
+      .then(res => {
+        const post_landing = res.data
+        dispatch(LandingPost(post_landing));
+      });
+  }
+}
+
+function LandingPost(post_landing) {
+  return {
+    type: GET_LANDING_POST,
+    post_landing
   }
 }
 

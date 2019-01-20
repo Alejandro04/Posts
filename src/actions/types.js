@@ -19,4 +19,5 @@ export const LOGIN = "LOGIN" ;
 
 /*LANDING*/
 export const GET_LANDING_POSTS = "GET_LANDING_POSTS" ; 
+export const GET_LANDING_POST = "GET_LANDING_POST" ;
 
