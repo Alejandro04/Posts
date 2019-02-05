@@ -19,12 +19,12 @@ import { Redirect } from 'react-router-dom'
 /*CONFIG ENDPOINT*/
 
 //DEV
-const API_URL = "http://localhost:3003/api/v1";
-const LOGIN_URL = "http://localhost:3003/auth/sign_in"
+//const API_URL = "http://localhost:3003/api/v1";
+//const LOGIN_URL = "http://localhost:3003/auth/sign_in"
 
 //PROD
-//const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
-//const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1/";
+const LOGIN_URL = "https://still-anchorage-83213.herokuapp.com/auth/sign_in"
+const API_URL = "https://still-anchorage-83213.herokuapp.com/api/v1";
 
 /*LOGIN*/
 export function authUser(props) {
